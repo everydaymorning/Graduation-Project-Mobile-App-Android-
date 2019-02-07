@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="SMART WEATHER">
+
+        <menu>
+            <item
+                android:id="@+id/version"
+                android:title="버전 정보">
+
+            </item>
+
+            <item
+                android:id="@+id/alarm_setting"
+                android:title="알림 설정">
+
+            </item>
+
+            <item
+                android:id="@+id/evaluation"
+                android:title="평가">
+
+            </item>
+
+            <item
+                android:id="@+id/help"
+                android:title="도움말">
+
+            </item>
+        </menu>
+    </item>
+
+
+</menu>

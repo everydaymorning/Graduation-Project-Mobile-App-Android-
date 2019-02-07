@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="title">
+        <item>모자</item>
+        <item>외투</item>
+        <item>상의</item>
+        <item>하의</item>
+        <item>신발</item>
+    </string-array>
+
+    <string-array name="setting">
+        <item>로그인 정보</item>
+        <item>알림 설정</item>
+        <item>도움말</item>
+        <item>개인 정보 약관</item>
+    </string-array>
+    <string-array name="item">
+        <item>item1</item>
+        <item>item2</item>
+        <item>item3</item>
+        <item>item4</item>
+        <item>item5</item>
+    </string-array>
+
+    <integer-array name="back">
+        <item>@drawable/back_arrow</item>
+        <item>@drawable/back_arrow</item>
+        <item>@drawable/back_arrow</item>
+        <item>@drawable/back_arrow</item>
+        <item>@drawable/back_arrow</item>
+    </integer-array>
+
+    <integer-array name="forward">
+        <item>@drawable/for_arrow</item>
+        <item>@drawable/for_arrow</item>
+        <item>@drawable/for_arrow</item>
+        <item>@drawable/for_arrow</item>
+        <item>@drawable/for_arrow</item>
+    </integer-array>
+
+</resources>
