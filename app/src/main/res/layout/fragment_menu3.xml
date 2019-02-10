@@ -5,8 +5,71 @@
     android:background="#ffffff">
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="지역 이름"
+        android:textSize="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="현재 날짜"
+        android:textSize="15dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"/>
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:src="@drawable/bad"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="메시지!!!"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"/>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="미세먼지"/>
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <EditText
+            android:id="@+id/edit"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:hint="enter text to search"/>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:text="search"
+            android:textSize="12sp"
+            android:onClick="mOnClick"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="13sp"
+            android:textStyle="bold"/>
+
+    </ScrollView>
+
 </LinearLayout>
