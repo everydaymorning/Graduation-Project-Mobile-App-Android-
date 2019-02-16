@@ -7,14 +7,28 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.smartproject3.R;
 
-public class Menu1Fragment extends Fragment {
+import java.net.URLEncoder;
 
+public class Menu1Fragment extends Fragment {
+    TextView textView;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_menu1, container, false);
+        View v = inflater.inflate(R.layout.fragment_menu1, container, false);
+        try{
+            String str = URLEncoder.encode("종로구","utf-8");
+
+            textView.setText(str);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+
+
+        return v;
     }
 }
