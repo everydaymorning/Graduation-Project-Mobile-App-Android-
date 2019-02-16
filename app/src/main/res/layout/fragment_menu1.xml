@@ -4,28 +4,5 @@
     android:layout_height="match_parent"
     android:background="#ffffff">
 
-    <TextView
-        android:id="@+id/so2Value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        />
-    <TextView
-        android:id="@+id/coValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        />
-    <TextView
-        android:id="@+id/o3Value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        />
-    <TextView
-        android:id="@+id/no2Value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        />
+
 </LinearLayout>

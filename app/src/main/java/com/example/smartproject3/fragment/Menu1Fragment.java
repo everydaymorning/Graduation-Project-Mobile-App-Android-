@@ -20,9 +20,9 @@ public class Menu1Fragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_menu1, container, false);
         try{
-            String str = URLEncoder.encode("종로구","utf-8");
 
-            textView.setText(str);
+
+
         }catch(Exception e){
             e.printStackTrace();
         }
