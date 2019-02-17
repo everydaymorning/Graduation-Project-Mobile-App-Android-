@@ -41,6 +41,53 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="160dp"
+            android:layout_marginRight="20dp"
+            android:visibility="invisible"
+            app:backgroundTint="@color/colorWhite"
+            android:src="@drawable/for_arrow"
+            app:borderWidth="2dp"
+            android:elevation="6dp"
+
+            />
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="110dp"
+            android:layout_marginRight="20dp"
+            android:visibility="invisible"
+            android:src="@drawable/back_arrow"
+            app:backgroundTint="@color/colorWhite"
+            android:elevation="6dp"
+
+            app:borderWidth="2dp"
+
+            />
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="60dp"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/colorWhite"
+            android:src="@drawable/plus"
+            android:scaleType="center"
+            app:fabSize="normal"
+            app:borderWidth="0dp"
+            app:elevation="6dp"/>
+
     </android.support.design.widget.CoordinatorLayout>
 
 </LinearLayout>

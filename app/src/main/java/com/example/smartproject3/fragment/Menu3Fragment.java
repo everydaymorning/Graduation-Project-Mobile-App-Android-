@@ -51,6 +51,7 @@ public class Menu3Fragment extends Fragment {
     ImageView no2GradeImage;
     ImageView pm10ValueImage;
     ImageView pm25ValueImage;
+    TextView message;
     TextView so2value;
     TextView coValue;
     TextView o3Value;
@@ -62,7 +63,6 @@ public class Menu3Fragment extends Fragment {
     EditText search;
     Button searchButton;
     String grade;
-    String grade2;
     String so2ValueGrade;
     String coValueGrade;
     String o3ValueGrade;
@@ -86,6 +86,7 @@ public class Menu3Fragment extends Fragment {
         View fv = inflater.inflate(R.layout.fragment_menu3, container, false);
         context = container.getContext();
         dataTime = (TextView) fv.findViewById(R.id.dataTime);
+        message = (TextView) fv.findViewById(R.id.message);
         stationName = (TextView) fv.findViewById(R.id.stationName);
         search = (EditText) fv.findViewById(R.id.search);
         so2value = (TextView) fv.findViewById(R.id.so2Value);
@@ -133,15 +134,19 @@ public class Menu3Fragment extends Fragment {
         if(grade.equals("1")){
             gradeImage.setImageResource(R.drawable.goood);
             pm10ValueImage.setImageResource(R.drawable.goood);
+            message.setText("미세먼지 매우 양호!!\n" + "마스크 굳이 필요 없음!!");
         }else if(grade.equals("2")){
             gradeImage.setImageResource(R.drawable.normal);
             pm10ValueImage.setImageResource(R.drawable.normal);
+            message.setText("미세먼지 보통!!\n" + "혹시 모를 마스크 챙기시면 좋아요!!");
         }else if(grade.equals("3")){
             gradeImage.setImageResource(R.drawable.baddd);
             pm10ValueImage.setImageResource(R.drawable.baddd);
+            message.setText("미세먼지 나쁨!!\n" + "마스크 꼭 챙기세요!!");
         }else if(grade.equals("4")){
             gradeImage.setImageResource(R.drawable.verybad);
             pm10ValueImage.setImageResource(R.drawable.verybad);
+            message.setText("미세먼지 매우 나쁨!!\n" + "마스크 안챙기시면 위험해요!!");
         }else{
             return null;
         }
@@ -228,18 +233,27 @@ public class Menu3Fragment extends Fragment {
                     o3ValueGrade = items[11];
                     no2ValueGrade = items[12];
                     pm25ValueGrade = items[13];
+
                     if(grade.equals("1")){
                         gradeImage.setImageResource(R.drawable.goood);
                         pm10ValueImage.setImageResource(R.drawable.goood);
+                        message.setText("미세먼지 매우 양호!!\n" + "마스크 굳이 필요 없음!!");
+
                     }else if(grade.equals("2")){
                         gradeImage.setImageResource(R.drawable.normal);
                         pm10ValueImage.setImageResource(R.drawable.normal);
+                        message.setText("미세먼지 보통!!\n" + "혹시 모를 마스크 챙기시면 좋아요!!");
+
                     }else if(grade.equals("3")) {
                         gradeImage.setImageResource(R.drawable.baddd);
                         pm10ValueImage.setImageResource(R.drawable.baddd);
+                        message.setText("미세먼지 나쁨!!\n" + "마스크 꼭 챙기세요!!");
+
                     }else if(grade.equals("4")) {
                         gradeImage.setImageResource(R.drawable.verybad);
                         pm10ValueImage.setImageResource(R.drawable.verybad);
+                        message.setText("미세먼지 매우 나쁨!!\n" + "마스크 안챙기시면 위험해요!!");
+
                     }else{
                         return;
                     }
