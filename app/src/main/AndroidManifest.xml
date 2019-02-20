@@ -2,21 +2,24 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.smartproject3">
 
-    <uses-permission android:name = "android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
         android:hardwareAccelerated="false"
-        android:largeHeap="true"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".setting_activity.SettingList1"></activity>
-        <activity android:name=".setting_activity.SettingList2"></activity>
-        <activity android:name=".setting_activity.SettingList3"></activity>
-        <activity android:name=".setting_activity.SettingList4"></activity>
+        <activity android:name=".Menu2Button.ListActivity"></activity>
+        <activity android:name=".setting_activity.SettingList1" />
+        <activity android:name=".setting_activity.SettingList2" />
+        <activity android:name=".setting_activity.SettingList3" />
+        <activity android:name=".setting_activity.SettingList4" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

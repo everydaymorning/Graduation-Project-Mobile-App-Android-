@@ -1,5 +1,6 @@
 package com.example.smartproject3.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,6 +19,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import com.example.smartproject3.MainActivity;
+import com.example.smartproject3.Menu2Button.ListActivity;
 import com.example.smartproject3.R;
 import com.example.smartproject3.adapter.TestAdapter;
 import com.example.smartproject3.adapter.TestPagerAdapter;
@@ -28,7 +30,7 @@ import java.util.List;
 public class Menu2Fragment extends Fragment{
     private Animation fab_open, fab_close;
     private Boolean isFabOpen = false;
-    private FloatingActionButton fab, fab1, fab2;
+    private FloatingActionButton fab, fab1, fab2, fab3;
 
     public static Menu2Fragment newInstance() {
         return new Menu2Fragment();
@@ -55,6 +57,7 @@ public class Menu2Fragment extends Fragment{
         fab = (FloatingActionButton) fv.findViewById(R.id.fab);
         fab1 = (FloatingActionButton) fv.findViewById(R.id.fab1);
         fab2 = (FloatingActionButton) fv.findViewById(R.id.fab2);
+        fab3 = (FloatingActionButton) fv.findViewById(R.id.fab3);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +71,8 @@ public class Menu2Fragment extends Fragment{
             @Override
             public void onClick(View v) {
                 anim();
+                Intent intent = new Intent(getActivity(), ListActivity.class);
+                startActivity(intent);
 
             }
         });
@@ -79,7 +84,14 @@ public class Menu2Fragment extends Fragment{
             }
         });
 
+        fab3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                anim();
+            }
+        });
         return fv;
+
     }
 
     public void anim() {
@@ -87,14 +99,18 @@ public class Menu2Fragment extends Fragment{
         if (isFabOpen) {
             fab1.startAnimation(fab_close);
             fab2.startAnimation(fab_close);
+            fab3.startAnimation(fab_close);
             fab1.setClickable(false);
             fab2.setClickable(false);
+            fab3.setClickable(false);
             isFabOpen = false;
         } else {
             fab1.startAnimation(fab_open);
             fab2.startAnimation(fab_open);
+            fab3.startAnimation(fab_open);
             fab1.setClickable(true);
             fab2.setClickable(true);
+            fab3.setClickable(true);
             isFabOpen = true;
         }
     }
