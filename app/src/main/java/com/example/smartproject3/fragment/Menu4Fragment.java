@@ -32,6 +32,7 @@ public class Menu4Fragment extends Fragment {
         adapter = new CommunityAdapter();
         listView = (ListView) fv.findViewById(R.id.comm_listview);
 
+        listView.setAdapter(adapter);
 
         return fv;
     }
