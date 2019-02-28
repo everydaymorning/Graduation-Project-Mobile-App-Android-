@@ -1,15 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff">
 
-    <ListView
-        android:id="@+id/comm_listview"
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/frag4coordinator"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </ListView>
+        <ListView
+            android:id="@+id/board_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/write"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="60dp"
+            android:backgroundTint="@color/colorWhite"
+            android:src="@drawable/plus"
+            android:scaleType="center"
+            app:fabSize="normal"
+            app:borderWidth="0dp"
+            app:elevation="6dp"/>
+    </android.support.design.widget.CoordinatorLayout>
+
+
 
 
 </LinearLayout>

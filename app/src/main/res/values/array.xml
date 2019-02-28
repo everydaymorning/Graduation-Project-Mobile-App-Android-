@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <string-array name="user_type">
+        <item>추위 잘 타는 타입</item>
+        <item>추위 적당히 타는 타입</item>
+        <item>보통 타입</item>
+        <item>더위 적당히 타는 타입</item>
+        <item>더위 잘 타는 타입</item>
+    </string-array>
+
     <string-array name="title">
         <item>모자</item>
         <item>외투</item>

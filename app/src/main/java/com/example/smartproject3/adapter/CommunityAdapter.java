@@ -4,22 +4,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.smartproject3.Comm_item;
+import com.example.smartproject3.CustomDTO;
 import com.example.smartproject3.R;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
 public class CommunityAdapter extends BaseAdapter {
 
     ArrayList<Comm_item> comm_list = new ArrayList<Comm_item>();
-    TextView comm_title;
-    TextView comm_place;
-    TextView comm_type;
-    TextView comm_content;
-    TextView comm_id;
-    TextView comm_time;
+
     @Override
     public int getCount() {
         return comm_list.size();
@@ -37,25 +37,36 @@ public class CommunityAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        CustomViewHolder viewHolder;
         if(convertView == null){
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.comm_item, null, false);
+            viewHolder = new CustomViewHolder();
 
-            comm_title = (TextView) convertView.findViewById(R.id.comm_title);
-            comm_place = (TextView) convertView.findViewById(R.id.comm_place);
-            comm_type = (TextView) convertView.findViewById(R.id.comm_type);
-            comm_content = (TextView) convertView.findViewById(R.id.comm_content);
-            comm_id = (TextView) convertView.findViewById(R.id.comm_id);
-            comm_time = (TextView) convertView.findViewById(R.id.comm_time);
+            viewHolder.textUser = (TextView) convertView.findViewById(R.id.boardUser);
+            viewHolder.textType = (TextView) convertView.findViewById(R.id.boardType);
+            viewHolder.textReg = (TextView) convertView.findViewById(R.id.boardReg);
+            viewHolder.textContent = (TextView) convertView.findViewById(R.id.boardContent);
+            viewHolder.textDate = (TextView) convertView.findViewById(R.id.boardDate);
 
-            comm_title.setText(comm_list.get(position).getComm_title());
-            comm_place.setText(comm_list.get(position).getComm_place());
-            comm_type.setText(comm_list.get(position).getComm_type());
-            comm_content.setText(comm_list.get(position).getComm_content());
-            comm_id.setText(comm_list.get(position).getComm_id());
-            comm_time.setText(comm_list.get(position).getComm_time());
+            convertView.setTag(viewHolder);
 
-            return convertView;
+        }else{
+            viewHolder = (CustomViewHolder) convertView.getTag();
         }
-        return null;
+
+
+        return convertView;
+    }
+
+    class CustomViewHolder {
+        TextView textUser;
+        TextView textType;
+        TextView textReg;
+        TextView textContent;
+        TextView textDate;
+    }
+
+    public void addItem(Comm_item dto) {
+        comm_list.add(dto);
     }
 }

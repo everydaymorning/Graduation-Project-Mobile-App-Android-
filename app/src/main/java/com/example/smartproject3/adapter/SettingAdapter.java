@@ -38,6 +38,8 @@ public class SettingAdapter extends BaseAdapter {
 
             holder.title = (TextView) convertView.findViewById(R.id.setting_title);
 
+
+
             convertView.setTag(holder);
         }else{
             holder = (SettingHolder) convertView.getTag();

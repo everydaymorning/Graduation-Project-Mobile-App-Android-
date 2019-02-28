@@ -55,7 +55,7 @@ public class Menu1Fragment extends Fragment {
     Date date2 = new Date(now);
     SimpleDateFormat hour = new SimpleDateFormat("HH");
     String getTime = hour.format(date2);
-    Integer hour_1 = Integer.parseInt(getTime) - 1;
+    Integer hour_1 = Integer.parseInt(getTime);
 
 
     String strHour_1 = hour_1.toString();

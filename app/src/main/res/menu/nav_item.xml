@@ -3,6 +3,13 @@
     <item android:title="SMART WEATHER">
 
         <menu>
+
+            <item
+                android:id="@+id/login"
+                android:title="로그인"
+                >
+
+            </item>
             <item
                 android:id="@+id/version"
                 android:title="버전 정보">

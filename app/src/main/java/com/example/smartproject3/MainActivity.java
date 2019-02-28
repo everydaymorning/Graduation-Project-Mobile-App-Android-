@@ -1,6 +1,7 @@
 package com.example.smartproject3;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.BottomNavigationView;
@@ -89,11 +90,38 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                drawerLayout.closeDrawer(GravityCompat.START);
 
+
+                int id = menuItem.getItemId();
+
+                if(id == R.id.login){
+                    Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(loginIntent);
+                    Intent intent = getIntent();
+                    String userID = intent.getStringExtra("userID");
+
+                }
+                if(id == R.id.version){
+                    Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(loginIntent);
+                }
+                if(id == R.id.alarm_setting){
+                    Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(loginIntent);
+                }
+                if(id == R.id.evaluation){
+                    Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(loginIntent);
+                }
+                if(id == R.id.help){
+                    Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(loginIntent);
+                }
+                drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             }
         });
+
 
     }
 }
