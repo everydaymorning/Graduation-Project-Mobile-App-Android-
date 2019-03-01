@@ -105,7 +105,7 @@ public class WriteActivity extends AppCompatActivity {
                 Date date2 = new Date(now);
                 SimpleDateFormat hour = new SimpleDateFormat("yyyy-MM-dd HH:mm");
                 String getDate = hour.format(date2);
-                WriteRequest writeRequest = new WriteRequest("abc", content, type, "bbc", getDate, responseListener);
+                WriteRequest writeRequest = new WriteRequest("이해강", content, type, "쌍령동", getDate, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(WriteActivity.this);
                 queue.add(writeRequest);
 

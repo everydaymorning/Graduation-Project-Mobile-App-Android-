@@ -7,6 +7,7 @@
     android:background="#ffffff">
 
 
+
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/frag4coordinator"
         android:layout_width="match_parent"
@@ -15,7 +16,8 @@
         <ListView
             android:id="@+id/board_listview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="50dp">
 
         </ListView>
 
@@ -24,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
-            android:layout_marginBottom="60dp"
+            android:layout_marginBottom="70dp"
             android:backgroundTint="@color/colorWhite"
             android:src="@drawable/plus"
             android:scaleType="center"

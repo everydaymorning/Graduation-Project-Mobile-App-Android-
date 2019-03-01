@@ -15,10 +15,18 @@ import com.example.smartproject3.R;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CommunityAdapter extends BaseAdapter {
 
-    ArrayList<Comm_item> comm_list = new ArrayList<Comm_item>();
+    List<Comm_item> comm_list = new ArrayList<Comm_item>();
+
+    public CommunityAdapter() {
+    }
+
+    public CommunityAdapter(List<Comm_item> comm_list) {
+        this.comm_list = comm_list;
+    }
 
     @Override
     public int getCount() {
@@ -50,10 +58,17 @@ public class CommunityAdapter extends BaseAdapter {
 
             convertView.setTag(viewHolder);
 
+
         }else{
             viewHolder = (CustomViewHolder) convertView.getTag();
         }
 
+        Comm_item dto = comm_list.get(position);
+        viewHolder.textUser.setText(dto.getBoardUser());
+        viewHolder.textContent.setText(dto.getBoardContent());
+        viewHolder.textType.setText(dto.getBoardType());
+        viewHolder.textReg.setText(dto.getBoardReg());
+        viewHolder.textDate.setText(dto.getBoardDate());
 
         return convertView;
     }
