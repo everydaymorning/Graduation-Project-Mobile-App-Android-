@@ -1,8 +1,8 @@
 package com.example.smartproject3.Menu2Button;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,18 +11,17 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.smartproject3.CustomList;
 import com.example.smartproject3.GetAlImages;
-import com.example.smartproject3.ImageListView;
 import com.example.smartproject3.R;
+import com.example.smartproject3.ViewFullImage;
 
 import org.json.JSONException;
 
@@ -93,6 +92,14 @@ public class ListActivity extends AppCompatActivity {
 
 
         listView = (ListView) findViewById(R.id.listView);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), ViewFullImage.class);
+                intent.putExtra(BITMAP_ID, position);
+                startActivity(intent);
+            }
+        });
         getURLs();
     }
 
@@ -172,4 +179,6 @@ public class ListActivity extends AppCompatActivity {
         GetURLs gu = new GetURLs();
         gu.execute(GET_IMAGE_URL);
     }
+
+
 }

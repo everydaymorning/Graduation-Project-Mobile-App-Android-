@@ -32,6 +32,8 @@ public class CustomList extends ArrayAdapter<String> {
 
         LayoutInflater inflater = context.getLayoutInflater();
         View listViewItem = inflater.inflate(R.layout.all_list_custom, null, true);
+
+
         TextView textCategory = (TextView) listViewItem.findViewById(R.id.category);
         TextView textSeason = (TextView) listViewItem.findViewById(R.id.season);
         ImageView image = (ImageView) listViewItem.findViewById(R.id.imageView);
