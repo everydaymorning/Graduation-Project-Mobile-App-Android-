@@ -11,14 +11,13 @@ public class RegisterRequest extends StringRequest {
     final static private String URL = "http://zmflrql.cafe24.com/register.php";
     private Map<String, String> parameters = new HashMap<String, String>();
 
-    public RegisterRequest(String userID, String userPassword, String userName, int userAge, Response.Listener<String> listener) {
+    public RegisterRequest(String userID, String userPassword, String userType, String userAddress, Response.Listener<String> listener) {
         super(Method.POST, URL, listener, null);
 
         parameters.put("userID", userID);
         parameters.put("userPassword", userPassword);
-        parameters.put("userName", userName);
-        parameters.put("userAge", userAge +"");
-
+        parameters.put("userType", userType);
+        parameters.put("userAddress", userAddress);
     }
 
     @Override

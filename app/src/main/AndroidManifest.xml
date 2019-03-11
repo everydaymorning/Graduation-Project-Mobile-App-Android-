@@ -5,8 +5,16 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
+        android:name=".AppController"
         android:allowBackup="true"
         android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
@@ -16,19 +24,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".WriteActivity"></activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".RegisterActivity"></activity>
-        <activity android:name=".Menu2Button.ListActivity" />
-        <activity android:name=".setting_activity.SettingList1" />
-        <activity android:name=".setting_activity.SettingList2" />
-        <activity android:name=".setting_activity.SettingList3" />
-        <activity android:name=".setting_activity.SettingList4" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginActivity"
+            android:noHistory="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".Menu2Button.ListActivity" />
+        <activity android:name=".Menu2Button.ClothesRegisterActivity" />
+        <activity android:name=".Menu2Button.InformationRegisterActivity" />
+        <activity android:name=".setting_activity.SettingList1" />
+        <activity android:name=".setting_activity.SettingList2" />
+        <activity android:name=".setting_activity.SettingList3" />
+        <activity android:name=".setting_activity.SettingList4" />
+        <activity android:name=".MainActivity">
+
         </activity>
     </application>
 

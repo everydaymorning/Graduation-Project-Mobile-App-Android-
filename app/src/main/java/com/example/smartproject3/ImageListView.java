@@ -1,28 +1,13 @@
-package com.example.smartproject3.Menu2Button;
+package com.example.smartproject3;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.StrictMode;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import com.example.smartproject3.CustomList;
-import com.example.smartproject3.GetAlImages;
-import com.example.smartproject3.ImageListView;
-import com.example.smartproject3.R;
 
 import org.json.JSONException;
 
@@ -31,11 +16,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class ListActivity extends AppCompatActivity {
-    DrawerLayout drawerLayout;
-    ImageButton backButton;
-    String userID;
-    TextView userText;
+public class ImageListView extends AppCompatActivity {
 
     private ListView listView;
 
@@ -44,53 +25,11 @@ public class ListActivity extends AppCompatActivity {
     public GetAlImages getAlImages;
 
     public static final String BITMAP_ID = "BITMAP_ID";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-
-
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,0,0);
-        drawerLayout.setDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
-        drawerLayout.setVisibility(View.VISIBLE);
-
-        backButton = (ImageButton) findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.main_nav);
-
-        Bundle bundle = getIntent().getExtras();
-        if(bundle != null) {
-            userID = bundle.getString("userID");
-
-
-        }
-
-        View v = navigationView.getHeaderView(0);
-        userText = (TextView) v.findViewById(R.id.userText);
-        userText.setText(userID);
-
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                drawerLayout.closeDrawer(GravityCompat.START);
-
-                return true;
-            }
-        });
-
 
         listView = (ListView) findViewById(R.id.listView);
         getURLs();
@@ -102,7 +41,7 @@ public class ListActivity extends AppCompatActivity {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(ListActivity.this,"Downloading images...","Please wait...",false,false);
+                loading = ProgressDialog.show(ImageListView.this,"Downloading images...","Please wait...",false,false);
             }
 
             @Override
@@ -110,7 +49,7 @@ public class ListActivity extends AppCompatActivity {
                 super.onPostExecute(v);
                 loading.dismiss();
                 //Toast.makeText(ImageListView.this,"Success",Toast.LENGTH_LONG).show();
-                CustomList customList = new CustomList(ListActivity.this, GetAlImages.category, GetAlImages.bitmaps, GetAlImages.season);
+                CustomList customList = new CustomList(ImageListView.this, GetAlImages.category, GetAlImages.bitmaps, GetAlImages.season);
                 listView.setAdapter(customList);
             }
 
@@ -136,7 +75,7 @@ public class ListActivity extends AppCompatActivity {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(ListActivity.this,"Loading...","Please Wait...",true,true);
+                loading = ProgressDialog.show(ImageListView.this,"Loading...","Please Wait...",true,true);
             }
 
             @Override
@@ -172,4 +111,6 @@ public class ListActivity extends AppCompatActivity {
         GetURLs gu = new GetURLs();
         gu.execute(GET_IMAGE_URL);
     }
+
+
 }

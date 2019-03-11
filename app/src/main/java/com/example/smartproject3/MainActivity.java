@@ -1,11 +1,11 @@
 package com.example.smartproject3;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -14,8 +14,10 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.smartproject3.fragment.Menu1Fragment;
 import com.example.smartproject3.fragment.Menu2Fragment;
@@ -23,10 +25,16 @@ import com.example.smartproject3.fragment.Menu3Fragment;
 import com.example.smartproject3.fragment.Menu4Fragment;
 import com.example.smartproject3.fragment.Menu5Fragment;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     FragmentTransaction transaction;
+    TextView userText;
+    String userID;
+    String userType;
+    String userAddress;
     // FrameLayout에 각 메뉴의 Fragment를 바꿔 줌
     private FragmentManager fragmentManager = getSupportFragmentManager();
     // 4개의 메뉴에 들어갈 Fragment들
@@ -43,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,0,0);
@@ -87,6 +97,25 @@ public class MainActivity extends AppCompatActivity {
         });
         NavigationView navigationView = (NavigationView) findViewById(R.id.main_nav);
 
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null){
+            userID = bundle.getString("userID");
+            userType = bundle.getString("userType");
+            userAddress = bundle.getString("userAddress");
+        }
+
+        View v = navigationView.getHeaderView(0);
+        userText = (TextView) v.findViewById(R.id.userText);
+        userText.setText(userID);
+
+        Fragment fragment = new Menu4Fragment();
+        Bundle fragBundle = new Bundle();
+        bundle.putString("userID", userID);
+        bundle.putString("userType", userType);
+        bundle.putString("userAddress", userAddress);
+        fragment.setArguments(fragBundle);
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -94,13 +123,8 @@ public class MainActivity extends AppCompatActivity {
 
                 int id = menuItem.getItemId();
 
-                if(id == R.id.login){
-                    Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(loginIntent);
-                    Intent intent = getIntent();
-                    String userID = intent.getStringExtra("userID");
 
-                }
+
                 if(id == R.id.version){
                     Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(loginIntent);
@@ -123,5 +147,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+
+
+    public String getUserID(){
+        return userID;
+    }
+
+    public String getUserType(){
+        return userType;
+    }
+
+    public String getUserAddress(){
+        return userAddress;
     }
 }

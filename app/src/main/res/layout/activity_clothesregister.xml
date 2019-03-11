@@ -1,14 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="전체리스트"/>
+    android:background="@color/colorWhite"
+        >
 
-</LinearLayout>
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/coordinatorLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:elevation="1dp">
+
+                <include layout="@layout/tool_bar4"/>
+
+            </android.support.design.widget.AppBarLayout>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/upload_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+
+                android:layout_margin="20dp"
+                android:src="@android:drawable/ic_menu_upload" />
+
+        </android.support.design.widget.CoordinatorLayout>
+
+    <LinearLayout
+        android:paddingTop="50dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Choose Image"
+            android:id="@+id/buttonChoose"
+            />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="130dp"
+            android:id="@+id/imageView"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:paddingTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:text="카테고리"
+            android:paddingLeft="30dp"/>
+
+        <Spinner
+            android:id="@+id/categorySpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:entries="@array/category"
+            android:paddingLeft="25dp"
+            android:layout_marginTop="10dp"
+            >
+
+        </Spinner>
+
+        <TextView
+            android:paddingTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:text="계절"
+            android:paddingLeft="30dp"/>
+
+        <Spinner
+            android:id="@+id/seasonSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:entries="@array/season"
+            android:paddingLeft="25dp"
+            android:layout_marginTop="10dp">
+
+        </Spinner>
+
+
+
+
+    </LinearLayout>
+
+
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/main_nav"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_header_layout"
+            app:menu="@menu/nav_item"
+            >
+
+        </android.support.design.widget.NavigationView>
+
+
+</android.support.v4.widget.DrawerLayout>

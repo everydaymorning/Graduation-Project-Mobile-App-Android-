@@ -1,16 +1,25 @@
 package com.example.smartproject3.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -50,6 +59,27 @@ public class Menu4Fragment extends Fragment {
     private CommunityAdapter adapter;
     private ListView listView;
     FloatingActionButton writeButton;
+
+    String userID;
+    String userType;
+    String userAddress;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if(getActivity() != null && getActivity() instanceof MainActivity){
+            userID = ((MainActivity)getActivity()).getUserID();
+            userType = ((MainActivity)getActivity()).getUserType();
+            userAddress = ((MainActivity) getActivity()).getUserAddress();
+
+            Log.i("fragID", userID);
+            Log.i("fragType", userType);
+            Log.i("fragAddress", userAddress);
+
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -71,9 +101,17 @@ public class Menu4Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), WriteActivity.class);
+                intent.putExtra("userID", userID);
+                intent.putExtra("userType", userType);
+                intent.putExtra("userAddress", userAddress);
+
+
                 startActivity(intent);
+
             }
         });
+
+
 
         return fv;
     }

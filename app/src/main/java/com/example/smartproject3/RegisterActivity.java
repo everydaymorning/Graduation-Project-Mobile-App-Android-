@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -16,7 +18,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class RegisterActivity extends AppCompatActivity {
-
+    String userType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,17 +26,28 @@ public class RegisterActivity extends AppCompatActivity {
 
         final EditText idText = (EditText) findViewById(R.id.Id);
         final EditText passwordText = (EditText) findViewById(R.id.psw);
-        final EditText nameText = (EditText) findViewById(R.id.nameText);
-        final EditText ageText = (EditText) findViewById(R.id.ageText);
+        final Spinner typeSpinner = (Spinner) findViewById(R.id.type_spin);
+        final EditText addressText = (EditText) findViewById(R.id.ageText);
 
+
+        typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                userType = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         Button registerButton = (Button) findViewById(R.id.registerButton);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String userID = idText.getText().toString();
                 final String userPassword = passwordText.getText().toString();
-                final String userName = nameText.getText().toString();
-                final int userAge = Integer.parseInt(ageText.getText().toString());
+                final String userAddress = addressText.getText().toString();
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() { // 특정 요청을 한 이후에 리스너에서 원하는 결과값을 다룰 수 있게 함
                     @Override
@@ -62,7 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     }
                 };
-                RegisterRequest registerRequest = new RegisterRequest(userID, userPassword, userName, userAge, responseListener);
+                RegisterRequest registerRequest = new RegisterRequest(userID, userPassword, userType, userAddress, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
                 queue.add(registerRequest);
             }

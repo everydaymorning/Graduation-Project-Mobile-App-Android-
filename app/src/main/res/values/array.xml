@@ -3,10 +3,23 @@
 
     <string-array name="user_type">
         <item>추위 잘 타는 타입</item>
-        <item>추위 적당히 타는 타입</item>
         <item>보통 타입</item>
-        <item>더위 적당히 타는 타입</item>
         <item>더위 잘 타는 타입</item>
+    </string-array>
+
+    <string-array name="category">
+        <item>모자</item>
+        <item>외투</item>
+        <item>상의</item>
+        <item>하의</item>
+        <item>신발</item>
+    </string-array>
+
+    <string-array name="season">
+        <item>봄</item>
+        <item>여름</item>
+        <item>가을</item>
+        <item>겨울</item>
     </string-array>
 
     <string-array name="title">

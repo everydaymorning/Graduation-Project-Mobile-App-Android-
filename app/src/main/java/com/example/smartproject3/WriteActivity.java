@@ -1,6 +1,7 @@
 package com.example.smartproject3;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
@@ -31,7 +32,9 @@ public class WriteActivity extends AppCompatActivity {
     ImageView backButton;
     EditText board_title;
     TextView writeButton;
-
+    String userID;
+    String userType;
+    String userAddress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +47,10 @@ public class WriteActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        Intent intent = getIntent();
+        userID = intent.getStringExtra("userID");
+        userType = intent.getStringExtra("userType");
+        userAddress = intent.getStringExtra("userAddress");
 
 
         backButton = (ImageView) findViewById(R.id.back);
@@ -54,18 +61,6 @@ public class WriteActivity extends AppCompatActivity {
             }
         });
 
-        Spinner type_spinner = (Spinner) findViewById(R.id.type_spin);
-        type_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                type = parent.getItemAtPosition(position).toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         writeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +100,7 @@ public class WriteActivity extends AppCompatActivity {
                 Date date2 = new Date(now);
                 SimpleDateFormat hour = new SimpleDateFormat("yyyy-MM-dd HH:mm");
                 String getDate = hour.format(date2);
-                WriteRequest writeRequest = new WriteRequest("이해강", content, type, "쌍령동", getDate, responseListener);
+                WriteRequest writeRequest = new WriteRequest(userID, content, userType, userAddress, getDate, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(WriteActivity.this);
                 queue.add(writeRequest);
 

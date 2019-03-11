@@ -1,9 +1,11 @@
 package com.example.smartproject3;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +21,18 @@ import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
     final static String TAG = "LoginActivity";
+    AlertDialog.Builder builder;
+    AlertDialog dialog;
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        finish();
+
+    }
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,22 +67,30 @@ public class LoginActivity extends AppCompatActivity {
                             if(success){
                                 String userID = jsonResponse.getString("userID");
                                 String userPassword = jsonResponse.getString("userPassword");
+                                String userType = jsonResponse.getString("userType");
+                                String userAddress = jsonResponse.getString("userAddress");
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                                builder.setMessage("로그인에 성공하셨습니다.")
-                                        .setPositiveButton("확인", null)
-                                        .create()
-                                        .show();
+                                AlertDialog ad = builder.create();
+                                ad.setMessage("로그인에 성공하셨습니다.");
+                                ad.show();
+
 
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 intent.putExtra("userID", userID);
                                 intent.putExtra("userPassword", userPassword);
-                                LoginActivity.this.startActivity(intent);
+                                intent.putExtra("userType", userType);
+                                intent.putExtra("userAddress", userAddress);
+                                Log.i("userLogin",userID);
+                                startActivity(intent);
+                                ad.dismiss();
+
                             }else{
-                                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                                builder = new AlertDialog.Builder(LoginActivity.this);
                                 builder.setMessage("로그인에 실패하셨습니다.")
                                         .setNegativeButton("다시 시도", null)
                                         .create()
                                         .show();
+
                             }
                         }catch(JSONException e){
                             e.printStackTrace();
