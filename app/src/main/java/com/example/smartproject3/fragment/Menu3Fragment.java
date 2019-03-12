@@ -3,12 +3,17 @@ package com.example.smartproject3.fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
@@ -21,6 +26,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.smartproject3.GPSInfo;
+import com.example.smartproject3.GeoVariable;
 import com.example.smartproject3.MainActivity;
 import com.example.smartproject3.R;
 import com.example.smartproject3.Task;
@@ -38,9 +45,29 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
 public class Menu3Fragment extends Fragment {
+
+    GeoVariable geovariable = new GeoVariable();  // 클래스 변수 사용 위해
+    Geocoder geocoder; // 역지오코딩 하기 위해
+    double latitude, longitube; // 위도, 경도 전역변수
+
+    private final int PERMISSIONS_ACCESS_FINE_LOCATION = 1000;
+
+    private final int PERMISSIONS_ACCESS_COARSE_LOCATION = 1001;
+
+    private boolean isAccessFineLocation = false;
+
+    private boolean isAccessCoarseLocation = false;
+
+    private boolean isPermission = false;
+
+
+    private GPSInfo gps;
+
     private Context context;
     String[] resultText;
     String[] items;
@@ -69,6 +96,7 @@ public class Menu3Fragment extends Fragment {
     String no2ValueGrade;
     String pm25ValueGrade;
     String data;
+    String[] cut;
 
     public void onResume() {
         super.onResume();
@@ -104,12 +132,44 @@ public class Menu3Fragment extends Fragment {
         pm10ValueImage = (ImageView) fv.findViewById(R.id.pm10ValueImage);
         pm25ValueImage = (ImageView) fv.findViewById(R.id.pm25ValueImage);
         resultText = new String[15];
+        cut = new String[10];
         data = search.getText().toString();
+        gps = new GPSInfo(getContext());
+        // GPS 사용유무 가져오기
+        if (gps.isGetLocation()) {
+            //GPSInfo를 통해 알아낸 위도값과 경도값
+            double latitude = gps.getLatitude();
+            double longitude = gps.getLongitude();
+            //Geocoder
+            Geocoder gCoder = new Geocoder(getContext(), Locale.getDefault());
+            List<Address> addr = null;
+            try{
+                addr = gCoder.getFromLocation(latitude,longitude,5);
+                Address a = addr.get(0);
+                for (int i=0;i <= a.getMaxAddressLineIndex();i++) {
+                    //여기서 변환된 주소 확인할  수 있음
+                    Log.v("알림", "AddressLine(" + i + ")" + a.getAddressLine(i) + "\n");
+                    cut = a.getAddressLine(0).split(" ");
+                    search.setText(cut[4]);
+                }
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+            if (addr != null) {
+                if (addr.size()==0) {
+                    Toast.makeText(getContext(),"주소정보 없음", Toast.LENGTH_LONG).show();
+                }
+            }
+        } else {
+            // GPS 를 사용할수 없으므로
+            gps.showSettingsAlert();
+        }
 
+        callPermission();  // 권한 요청을 해야 함
 
         try {
 
-            resultText = new Task().execute(data).get();
+            resultText = new Task().execute(cut[4]).get();
 
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -326,9 +386,83 @@ public class Menu3Fragment extends Fragment {
         });
 
 
-
-
         return fv;
+    }
+
+
+    @Override
+
+    public void onRequestPermissionsResult(int requestCode, String[] permissions,
+
+                                           int[] grantResults) {
+
+        if (requestCode == PERMISSIONS_ACCESS_FINE_LOCATION
+
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+
+            isAccessFineLocation = true;
+
+
+        } else if (requestCode == PERMISSIONS_ACCESS_COARSE_LOCATION
+
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+
+
+            isAccessCoarseLocation = true;
+
+        }
+
+
+        if (isAccessFineLocation && isAccessCoarseLocation) {
+
+            isPermission = true;
+
+        }
+
+    }
+
+
+    // 전화번호 권한 요청
+
+    private void callPermission() {
+
+        // Check the SDK version and whether the permission is already granted or not.
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+
+                && ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION)
+
+                != PackageManager.PERMISSION_GRANTED) {
+
+
+
+            requestPermissions(
+
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+
+                    PERMISSIONS_ACCESS_FINE_LOCATION);
+
+
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+
+                && ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION)
+
+                != PackageManager.PERMISSION_GRANTED){
+
+
+            requestPermissions(
+
+                    new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION},
+
+                    PERMISSIONS_ACCESS_COARSE_LOCATION);
+
+        } else {
+
+            isPermission = true;
+
+        }
+
     }
 
 }

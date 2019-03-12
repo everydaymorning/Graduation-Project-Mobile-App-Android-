@@ -177,7 +177,7 @@ public class ListActivity extends AppCompatActivity {
             }
         }
         GetURLs gu = new GetURLs();
-        gu.execute(GET_IMAGE_URL);
+        gu.execute(GET_IMAGE_URL +"?name=" + userID);
     }
 
 
