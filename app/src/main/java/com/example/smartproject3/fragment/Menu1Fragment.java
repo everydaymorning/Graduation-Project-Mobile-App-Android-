@@ -132,8 +132,6 @@ public class Menu1Fragment extends Fragment {
 
         callPermission();  // 권한 요청을 해야 함
 
-        int lat = latitude.intValue();
-        int longi = longitube.intValue();
         LatXLngY tmp = convertGRID_GPS(TO_GRID, latitude, longitube);
 
         if(hour_1 < 10){
@@ -144,11 +142,11 @@ public class Menu1Fragment extends Fragment {
         lineChart = (LineChart) v.findViewById(R.id.chart);
 
         List<Entry> entries = new ArrayList<>();
-        entries.add(new Entry(12, 10));
-        entries.add(new Entry(13, 12));
-        entries.add(new Entry(14, 14));
-        entries.add(new Entry(15, 15));
-        entries.add(new Entry(16, 15));
+        entries.add(new Entry(10, hour_1 - 3));
+        entries.add(new Entry(11, hour_1 - 2));
+        entries.add(new Entry(13, hour_1 - 1));
+        entries.add(new Entry(14, hour_1));
+        entries.add(new Entry(15, hour_1 + 1));
 
 
         LineDataSet lineDataSet = new LineDataSet(entries, "온도");

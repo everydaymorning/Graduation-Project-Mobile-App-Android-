@@ -3,13 +3,210 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/listView"
-        android:layout_marginTop="10dp"
-        android:dividerHeight="32dp"
-        android:divider="@color/colorWhite"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="item 1"
+            android:layout_weight="1"
+            android:paddingTop="10dp"
+            android:paddingLeft="15dp"/>
+
+        <ImageButton
+            android:id="@+id/hatBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_arrow"
+            android:background="@color/colorWhite"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:id="@+id/hatImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"/>
+
+        <ImageButton
+            android:id="@+id/hatForeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/for_arrow"
+            android:background="@color/colorWhite"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="item 2"
+            android:layout_weight="1"
+            android:paddingTop="10dp"
+            android:paddingLeft="15dp"/>
+
+        <ImageButton
+            android:id="@+id/outerBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_arrow"
+            android:background="@color/colorWhite"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:id="@+id/outerImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"/>
+
+        <ImageButton
+            android:id="@+id/outerForeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/for_arrow"
+            android:background="@color/colorWhite"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="item 3"
+            android:layout_weight="1"
+            android:paddingTop="10dp"
+            android:paddingLeft="15dp"/>
+
+        <ImageButton
+            android:id="@+id/cloBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_arrow"
+            android:background="@color/colorWhite"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:id="@+id/cloImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"/>
+
+        <ImageButton
+            android:id="@+id/cloForeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/for_arrow"
+            android:background="@color/colorWhite"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="item 4"
+            android:layout_weight="1"
+            android:paddingTop="10dp"
+            android:paddingLeft="15dp"/>
+
+        <ImageButton
+            android:id="@+id/pantsBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_arrow"
+            android:background="@color/colorWhite"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:id="@+id/pantsImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"/>
+
+        <ImageButton
+            android:id="@+id/pantsForeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/for_arrow"
+            android:background="@color/colorWhite"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="item 5"
+            android:layout_weight="1"
+            android:paddingTop="10dp"
+            android:paddingLeft="15dp"/>
+
+        <ImageButton
+            android:id="@+id/shoeBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_arrow"
+            android:background="@color/colorWhite"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:id="@+id/shoeImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"/>
+
+        <ImageButton
+            android:id="@+id/shoeForeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/for_arrow"
+            android:background="@color/colorWhite"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
 
 
 </LinearLayout>

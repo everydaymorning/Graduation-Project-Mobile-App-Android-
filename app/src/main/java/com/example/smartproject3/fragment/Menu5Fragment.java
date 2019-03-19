@@ -1,11 +1,13 @@
 package com.example.smartproject3.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +15,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.smartproject3.CustomDTO;
+import com.example.smartproject3.MainActivity;
 import com.example.smartproject3.R;
 import com.example.smartproject3.SettingItem;
+import com.example.smartproject3.WriteActivity;
 import com.example.smartproject3.adapter.CustomAdapter;
 import com.example.smartproject3.adapter.SettingAdapter;
 import com.example.smartproject3.setting_activity.SettingList1;
@@ -27,6 +31,21 @@ public class Menu5Fragment extends Fragment {
     private SettingAdapter adapter;
     private ListView listView;
 
+    String userID;
+    String userType;
+    String userAddress;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if(getActivity() != null && getActivity() instanceof MainActivity){
+            userID = ((MainActivity)getActivity()).getUserID();
+            userType = ((MainActivity)getActivity()).getUserType();
+            userAddress = ((MainActivity) getActivity()).getUserAddress();
+
+        }
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,6 +61,11 @@ public class Menu5Fragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), ACTIVITIES[position]);
+
+                intent.putExtra("userID", userID);
+                intent.putExtra("userType", userType);
+                intent.putExtra("userAddress", userAddress);
+
                 startActivity(intent);
             }
         });

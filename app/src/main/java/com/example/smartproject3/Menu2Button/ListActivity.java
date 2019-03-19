@@ -73,8 +73,6 @@ public class ListActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if(bundle != null) {
             userID = bundle.getString("userID");
-
-
         }
 
         View v = navigationView.getHeaderView(0);

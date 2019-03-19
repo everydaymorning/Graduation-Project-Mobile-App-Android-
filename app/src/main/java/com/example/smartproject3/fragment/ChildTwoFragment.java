@@ -36,28 +36,10 @@ public class ChildTwoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View fv = inflater.inflate(R.layout.fragment_child_two, container, false);
 
-        adapter = new CustomAdapter();
-        listView = (ListView) fv.findViewById(R.id.listView);
 
-        setData();
-
-        listView.setAdapter(adapter);
 
         return fv;
     }
 
-    private void setData(){
-        String[] titles = getResources().getStringArray(R.array.item);
-        TypedArray back = getResources().obtainTypedArray(R.array.back);
-        TypedArray forward = getResources().obtainTypedArray(R.array.forward);
-        for(int i=0; i<titles.length;i++){
-            CustomDTO dto = new CustomDTO();
 
-            dto.setTitle(titles[i]);
-            dto.setBackImage(back.getResourceId(i,0));
-            dto.setForeImage(forward.getResourceId(i,0));
-
-            adapter.addItem(dto);
-        }
-    }
 }

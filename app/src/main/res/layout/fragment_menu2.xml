@@ -6,102 +6,30 @@
     android:layout_height="match_parent"
     android:background="#ffffff">
 
-    <android.support.design.widget.CoordinatorLayout
-        android:id="@+id/main_content"
+
+    <LinearLayout
+        android:paddingTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorWhite">
+        android:orientation="vertical">
 
-        <android.support.design.widget.AppBarLayout
-            android:id="@+id/appbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
-            app:elevation="0dp"
-            >
-
-            <android.support.design.widget.TabLayout
-                android:id="@+id/tab"
-                android:background="@color/colorWhite"
-                app:tabTextColor="@color/colorBlack"
-                app:tabIndicatorColor="@color/colorBlack"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                app:tabMode="fixed"
-                app:tabGravity="fill"
-                app:tabIndicatorHeight="1dp"/>
-        </android.support.design.widget.AppBarLayout>
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewpager"
+        <Button
+            android:id="@+id/regButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            android:layout_weight="1"
+            android:text="등록"
+            android:textSize="50dp"
+            android:background="@color/colorWhite"/>
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginBottom="60dp"
-            android:layout_marginRight="170dp"
-            android:visibility="invisible"
-            app:backgroundTint="@color/colorWhite"
-            android:src="@drawable/for_arrow"
-            app:borderWidth="2dp"
-            android:elevation="6dp"
-            />
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginBottom="60dp"
-            android:layout_marginRight="120dp"
-            android:visibility="invisible"
-            app:backgroundTint="@color/colorWhite"
-            android:src="@drawable/for_arrow"
-            app:borderWidth="2dp"
-            android:elevation="6dp"
-
-            />
-
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginBottom="60dp"
-            android:layout_marginRight="70dp"
-            android:visibility="invisible"
-            android:src="@drawable/back_arrow"
-            app:backgroundTint="@color/colorWhite"
-            android:elevation="6dp"
-
-            app:borderWidth="2dp"
-
-            />
-
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginBottom="60dp"
-            android:layout_marginRight="20dp"
-            android:backgroundTint="@color/colorWhite"
-            android:src="@drawable/plus"
-            android:scaleType="center"
-            app:fabSize="normal"
-            app:borderWidth="0dp"
-            app:elevation="6dp"/>
-
-    </android.support.design.widget.CoordinatorLayout>
+        <Button
+            android:id="@+id/getAllButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="조회"
+            android:textSize="50dp"
+            android:background="@color/colorWhite"/>
+    </LinearLayout>
 
 </LinearLayout>
