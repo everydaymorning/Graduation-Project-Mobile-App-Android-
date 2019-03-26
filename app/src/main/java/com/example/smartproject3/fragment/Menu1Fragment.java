@@ -169,6 +169,8 @@ public class Menu1Fragment extends Fragment {
         xAxis.setTextColor(Color.BLACK);
         xAxis.enableGridDashedLine(12, 24, 0);
 
+
+
         YAxis yLAxis = lineChart.getAxisLeft();
         yLAxis.setTextColor(Color.BLACK);
 
