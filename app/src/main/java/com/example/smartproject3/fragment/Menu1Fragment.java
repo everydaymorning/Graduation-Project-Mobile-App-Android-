@@ -21,7 +21,6 @@ import android.widget.Toast;
 import com.example.smartproject3.GPSInfo;
 import com.example.smartproject3.GeoVariable;
 import com.example.smartproject3.R;
-import com.example.smartproject3.Task2;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
@@ -35,13 +34,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.w3c.dom.Text;
 import org.xml.sax.InputSource;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -70,7 +66,8 @@ public class Menu1Fragment extends Fragment {
     public static int TO_GPS = 1;
     TextView temp;
     TextView reh;
-
+    String tmp;
+    String reh_;
     private GPSInfo gps;
     String[] cut;
     TextView curLct;
@@ -138,19 +135,19 @@ public class Menu1Fragment extends Fragment {
             strHour = "0" + strHour;
         }
         weather_url = "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastGrib?serviceKey=2uGyJBgCPweeBAJgGsn66sQhzC1Pxavtb0Km1Jxeql5EN9Abflr41RPz0X%2BO19kbwUKRbhUh1gQX2yvQYG2bIQ%3D%3D&base_date=" + weather_date + "&base_time=" + strHour + "&nx=" + tmp.x.intValue() + "&ny=" + tmp.y.intValue() + "&numOfRows=10&pageNo=1";
-        Log.i("url",weather_url);
+
         lineChart = (LineChart) v.findViewById(R.id.chart);
 
         List<Entry> entries = new ArrayList<>();
-        entries.add(new Entry(10, hour_1 - 3));
-        entries.add(new Entry(11, hour_1 - 2));
-        entries.add(new Entry(13, hour_1 - 1));
-        entries.add(new Entry(14, hour_1));
-        entries.add(new Entry(15, hour_1 + 1));
+        entries.add(new Entry(hour_1 - 3, 16));
+        entries.add(new Entry(hour_1 - 2, 15));
+        entries.add(new Entry(hour_1 - 1, 15));
+        entries.add(new Entry(hour_1, 12));
+        entries.add(new Entry(hour_1 + 1, 10));
 
 
         LineDataSet lineDataSet = new LineDataSet(entries, "온도");
-        lineDataSet.setLineWidth(2);
+        lineDataSet.setLineWidth(4f);
         lineDataSet.setCircleRadius(3);
         lineDataSet.setCircleColor(Color.parseColor("#ffffff"));
         lineDataSet.setCircleColorHole(Color.BLUE);
@@ -167,7 +164,7 @@ public class Menu1Fragment extends Fragment {
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextColor(Color.BLACK);
-        xAxis.enableGridDashedLine(12, 24, 0);
+        xAxis.enableGridDashedLine(10, 20, 0);
 
 
 
@@ -185,7 +182,7 @@ public class Menu1Fragment extends Fragment {
         lineChart.setDoubleTapToZoomEnabled(false);
         lineChart.setDrawGridBackground(false);
         lineChart.setDescription(description);
-        lineChart.animateY(2000, Easing.EasingOption.EaseInCubic);
+        lineChart.animateY(1000, Easing.EasingOption.EaseInCubic);
         lineChart.invalidate();
 
 
@@ -234,8 +231,8 @@ public class Menu1Fragment extends Fragment {
         @Override
         protected void onPostExecute(Document doc) {
 
-            String tmp = "";
-            String reh_ = "";
+            tmp = "";
+            reh_ = "";
             NodeList nodeList = doc.getElementsByTagName("item");
 
 
@@ -271,6 +268,7 @@ public class Menu1Fragment extends Fragment {
             }
             temp.setText(tmp);
             reh.setText(reh_);
+
 
             super.onPostExecute(doc);
         }

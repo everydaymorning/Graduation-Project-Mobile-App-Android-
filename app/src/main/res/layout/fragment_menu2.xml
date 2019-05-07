@@ -8,7 +8,7 @@
 
 
     <LinearLayout
-        android:paddingTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -20,7 +20,8 @@
             android:layout_weight="1"
             android:text="등록"
             android:textSize="50dp"
-            android:background="@color/colorWhite"/>
+            android:background="@color/colorWhite"
+            android:paddingBottom="50dp"/>
 
         <Button
             android:id="@+id/getAllButton"
@@ -29,7 +30,8 @@
             android:layout_weight="1"
             android:text="조회"
             android:textSize="50dp"
-            android:background="@color/colorWhite"/>
+            android:background="@color/colorWhite"
+            android:paddingBottom="50dp"/>
     </LinearLayout>
 
 </LinearLayout>

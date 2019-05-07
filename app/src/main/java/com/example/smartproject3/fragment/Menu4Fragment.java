@@ -7,10 +7,12 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
@@ -53,16 +55,17 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class Menu4Fragment extends Fragment {
+public class Menu4Fragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private List<Comm_item> userList;
-    private CommunityAdapter adapter;
+    final private CommunityAdapter adapter = new CommunityAdapter();
     private ListView listView;
     FloatingActionButton writeButton;
-
+    SwipeRefreshLayout swipeLayout;
     String userID;
     String userType;
     String userAddress;
+
 
     @Override
     public void onAttach(Context context) {
@@ -88,10 +91,10 @@ public class Menu4Fragment extends Fragment {
 
         userList = new ArrayList<Comm_item>();
         listView = (ListView) fv.findViewById(R.id.board_listview);
-        adapter = new CommunityAdapter();
 
 
-
+        swipeLayout = (SwipeRefreshLayout) fv.findViewById(R.id.swipeLayout);
+        swipeLayout.setOnRefreshListener(this);
         BackgroundTask task = new BackgroundTask();
         task.execute();
 
@@ -110,6 +113,7 @@ public class Menu4Fragment extends Fragment {
 
             }
         });
+
 
 
 
@@ -179,5 +183,23 @@ public class Menu4Fragment extends Fragment {
                 e.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public void onRefresh() {
+        adapter.clear();
+        swipeLayout.setRefreshing(true);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                BackgroundTask task = new BackgroundTask();
+                task.execute();
+                adapter.notifyDataSetChanged();
+                listView.setAdapter(adapter);
+                swipeLayout.setRefreshing(false);
+            }
+        }, 1000);
+
     }
 }

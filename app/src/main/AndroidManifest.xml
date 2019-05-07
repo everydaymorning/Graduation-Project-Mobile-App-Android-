@@ -48,6 +48,8 @@
         <activity android:name=".setting_activity.HelpRegister" />
         <activity android:name=".setting_activity.OneRegister" />
         <activity android:name=".MainActivity"></activity>
+
+
     </application>
 
 </manifest>

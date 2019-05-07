@@ -1,6 +1,7 @@
 package com.example.smartproject3;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -79,7 +81,13 @@ public class WriteActivity extends AppCompatActivity {
 
                                 AlertDialog.Builder builder = new AlertDialog.Builder(WriteActivity.this);
                                 builder.setMessage("게시글 등록에 성공하셨습니다.")
-                                        .setPositiveButton("확인", null)
+                                        .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+
+                                                finish();
+                                            }
+                                        })
                                         .create()
                                         .show();
 

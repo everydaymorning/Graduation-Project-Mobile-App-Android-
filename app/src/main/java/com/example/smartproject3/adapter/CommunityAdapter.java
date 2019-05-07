@@ -84,4 +84,8 @@ public class CommunityAdapter extends BaseAdapter {
     public void addItem(Comm_item dto) {
         comm_list.add(dto);
     }
+
+    public void clear(){
+        comm_list.clear();
+    }
 }

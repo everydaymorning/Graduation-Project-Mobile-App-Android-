@@ -12,14 +12,22 @@
         android:id="@+id/frag4coordinator"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <ListView
             android:id="@+id/board_listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="50dp">
+            android:layout_marginBottom="50dp"
+            android:choiceMode="singleChoice">
 
         </ListView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/write"

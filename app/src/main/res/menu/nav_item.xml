@@ -7,7 +7,7 @@
 
             <item
                 android:id="@+id/version"
-                android:title="버전 정보">
+                android:title="로그인 정보">
 
             </item>
 
@@ -19,13 +19,13 @@
 
             <item
                 android:id="@+id/evaluation"
-                android:title="평가">
+                android:title="도움말">
 
             </item>
 
             <item
                 android:id="@+id/help"
-                android:title="도움말">
+                android:title="개인 정보 약관">
 
             </item>
         </menu>
