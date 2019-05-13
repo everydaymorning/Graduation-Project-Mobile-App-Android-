@@ -103,6 +103,13 @@ public class MainActivity extends AppCompatActivity {
                         transaction.replace(R.id.frameLayout, menu4Fragment).commitAllowingStateLoss();
                         toolbar.setTitle("날씨 정보 공유 게시판");
                         button.setImageResource(R.drawable.ic_search_black_24dp);
+                        button.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                                startActivity(intent);
+                            }
+                        });
                         break;
                     }
                     case R.id.navigation_menu5: {

@@ -88,4 +88,6 @@ public class CommunityAdapter extends BaseAdapter {
     public void clear(){
         comm_list.clear();
     }
+
+
 }

@@ -10,7 +10,8 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
@@ -24,7 +25,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewFullImage"></activity>
+        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".ViewFullImage" />
         <activity android:name=".WriteActivity" />
         <activity
             android:name=".LoginActivity"
@@ -47,9 +49,7 @@
         <activity android:name=".setting_activity.FindRegister" />
         <activity android:name=".setting_activity.HelpRegister" />
         <activity android:name=".setting_activity.OneRegister" />
-        <activity android:name=".MainActivity"></activity>
-
-
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

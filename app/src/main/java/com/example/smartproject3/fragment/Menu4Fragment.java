@@ -57,7 +57,7 @@ import java.util.List;
 
 public class Menu4Fragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
-    private List<Comm_item> userList;
+    List<Comm_item> userList;
     final private CommunityAdapter adapter = new CommunityAdapter();
     private ListView listView;
     FloatingActionButton writeButton;
