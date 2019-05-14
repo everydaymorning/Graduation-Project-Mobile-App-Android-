@@ -87,7 +87,7 @@ public class Menu4Fragment extends Fragment implements SwipeRefreshLayout.OnRefr
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View fv = inflater.inflate(R.layout.fragment_menu4, container, false);
-
+        adapter.clear();
 
         userList = new ArrayList<Comm_item>();
         listView = (ListView) fv.findViewById(R.id.board_listview);
@@ -113,9 +113,6 @@ public class Menu4Fragment extends Fragment implements SwipeRefreshLayout.OnRefr
 
             }
         });
-
-
-
 
         return fv;
     }
