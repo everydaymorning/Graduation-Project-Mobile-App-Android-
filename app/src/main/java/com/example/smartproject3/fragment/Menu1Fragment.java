@@ -87,7 +87,7 @@ public class Menu1Fragment extends Fragment {
 
     String strHour = strHour_1 + "00";
 
-    String weather_url = "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastGrib?serviceKey=2uGyJBgCPweeBAJgGsn66sQhzC1Pxavtb0Km1Jxeql5EN9Abflr41RPz0X%2BO19kbwUKRbhUh1gQX2yvQYG2bIQ%3D%3D&base_date=" + weather_date + "&base_time=" + strHour + "&nx=60&ny=127&numOfRows=10&pageNo=1";
+    String weather_url = "url값=" + weather_date + "&base_time=" + strHour + "&nx=60&ny=127&numOfRows=10&pageNo=1";
 
     @Nullable
     @Override
