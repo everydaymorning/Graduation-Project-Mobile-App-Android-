@@ -33,7 +33,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 public class Task2 extends AsyncTask<String, Void, Document> {
 
     private TextView textView;
-    String clientKey = "2uGyJBgCPweeBAJgGsn66sQhzC1Pxavtb0Km1Jxeql5EN9Abflr41RPz0X%2BO19kbwUKRbhUh1gQX2yvQYG2bIQ%3D%3D";
+    String clientKey = "";
 
     private String str, receiveMsg;
     String[] arr = new String[15];
